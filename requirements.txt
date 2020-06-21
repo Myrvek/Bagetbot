@@ -57,7 +57,6 @@ qrcode==6.1
 requests==2.23.0
 selenium==3.141.0
 setuptools==41.2.0
-shiboken==25.14.2.1
 six==1.14.0
 soupsieve==2.0
 SpeechRecognition==3.8.1
