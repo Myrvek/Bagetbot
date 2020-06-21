@@ -62,7 +62,6 @@ soupsieve==2.0
 SpeechRecognition==3.8.1
 tabulate==0.8.7
 termcolor==1.1.0
-urllib==31.25.9
 websocket-client==0.57.0
 websockets==8.1
 wheel==0.34.2
