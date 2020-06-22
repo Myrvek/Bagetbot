@@ -5,24 +5,18 @@ import nekos
 import asyncio
 import wikipedia
 import pyowm
-import youtube_dl
-from discord.voice_client import VoiceClient
 import os
 from discord import utils
 from discord.ext.commands import Bot
-from ffmpeg import *
-from pyfiglet import figlet_format, FontError, FontNotFound
-import urllib.parse
 import re
 import json
 import sqlite3
 import io
-import speech_recognition as sr 
 import requests
 import random 
 import time
 from Cybernator import Paginator
-import COVID19Py
+
 
 
 Bot = commands.Bot(command_prefix='b_') # Переменная бота, тут вводите префикс какой вы хотите
