@@ -1,4 +1,4 @@
-import discord,sqlite3
+import discord,sqlite3,random 
 from discord.ext import commands
 
 class moderation(commands.Cog):
@@ -128,7 +128,13 @@ class moderation(commands.Cog):
                emb.add_field(name = "Серверов",value=f"{len(self.Bot.guilds)} сервер")
                emb.add_field(name = "Юзеры", value=f"{len(self.Bot.users)}")
                emb.add_field(name = "Эмодзи", value = f"{len(self.Bot.emojis)}")
+	       emb.add_field(name = "Есть на", value = f"{len(Bot.guilds)} ")
                await ctx.send(embed = emb)
+
+
+
+  
+               
 
 	
 
