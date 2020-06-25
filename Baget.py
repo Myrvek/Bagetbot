@@ -47,6 +47,8 @@ async def on_ready():
         await asyncio.sleep(10)
         await Bot.change_presence(activity= discord.Game("Команда помощи b_cmd"))
         await asyncio.sleep(10)
+        await Bot.change_presence(activity= discord.Game("Статы бота b_stats"))
+        await asyncio.sleep(10)
 
 
        
