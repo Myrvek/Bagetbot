@@ -119,6 +119,16 @@ class moderation(commands.Cog):
 	@commands.has_permissions(manage_messages= True)
 	async def clear(self,ctx,amount=100):
 		await ctx.channel.purge(limit=amount + 1)
+	@commands.command()
+	@commands.command()
+        async def stats(self, ctx):
+               emb = discord.Embed(title = "**Статистика бота Freebie Bot**",color = 0x29f1ff)
+               emb.add_field(name = "Команд", value = f"{len(ctx.bot.commands)}")
+               emb.add_field(name = "Возраст", value =f"{(datetime.datetime.now() - ctx.bot.user.created_at).days} дней" )
+               emb.add_field(name = "Серверов",value=f"{len(self.Bot.guilds)} сервер")
+               emb.add_field(name = "Юзеры", value=f"{len(self.Bot.users)}")
+               emb.add_field(name = "Эмодзи", value = f"{len(self.Bot.emojis)}")
+               await ctx.send(embed = emb)
 
 	
 
