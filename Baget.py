@@ -85,8 +85,15 @@ async def avatar(ctx, member : discord.Member = None): # Название ком
 async def servercount(ctx): # Название команды
     await ctx.send(f'Бот есть на {len(Bot.guilds)} серверах') # Выводит кол-во серверов бота
 
-    import random # Импортируем библиотеку рандома
-    #work
+@commands.command()
+async def stats(self, ctx):
+    emb = discord.Embed(title = "**Статистика бота **",color = 0x29f1ff)
+    emb.add_field(name = "Команд", value = f"{len(ctx.bot.commands)}")
+    emb.add_field(name = "Возраст", value =f"{(datetime.datetime.now() - ctx.bot.user.created_at).days} дней" )
+    emb.add_field(name = "Серверов",value=f"{len(self.Bot.guilds)} сервер")
+    emb.add_field(name = "Юзеры", value=f"{len(self.Bot.users)}")
+    emb.add_field(name = "Эмодзи", value = f"{len(self.Bot.emojis)}")
+    await ctx.send(embed = emb)
 
 @Bot.command()
 async def knb(ctx):
