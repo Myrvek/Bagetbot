@@ -119,7 +119,7 @@ class moderation(commands.Cog):
 	@commands.has_permissions(manage_messages= True)
 	async def clear(self,ctx,amount=100):
 		await ctx.channel.purge(limit=amount + 1)
-	@commands.command()
+	
 	@commands.command()
         async def stats(self, ctx):
                emb = discord.Embed(title = "**Статистика бота Freebie Bot**",color = 0x29f1ff)
