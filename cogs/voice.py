@@ -82,7 +82,7 @@ class voice(commands.Cog):
         conn.close()
 
     @commands.command()
-    async def help(self, ctx):
+    async def privhelp(self, ctx):
         embed = discord.Embed(title="Настройка войса", description="",color=0x7289da)
         embed.add_field(name=f'**Команды**', value=f'**Закрыть свой войс командой:**\n\n`voice lock`\n\n------------\n\n'
                         f'**Открыть твой канал через:**\n\n`voice unlock`\n\n------------\n\n'
