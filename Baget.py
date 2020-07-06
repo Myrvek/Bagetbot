@@ -1,3 +1,5 @@
+# -*- coding: utf8 -*-
+
 import discord 
 from discord.ext import commands 
 import datetime
@@ -23,8 +25,6 @@ Bot = commands.Bot(command_prefix='b_') # Переменная бота, тут 
 Bot.remove_command('help') 
 
 
-connection = sqlite3.connect('server.db')
-cursor = connection.cursor()
 
 for file in os.listdir('./cogs'):
     if file.endswith('.py'):
@@ -38,16 +38,12 @@ def postfix(num:int, end_1:str='год', end_2:str='года', end_3:str='лет
 
 @Bot.event
 async def on_ready():
-   
-
-   
-
     while True:
         await Bot.change_presence(activity= discord.Activity(name=' на жизнь', type= discord.ActivityType.watching))
         await asyncio.sleep(10)
-        await Bot.change_presence(activity= discord.Game("Команда помощи b_cmd"))
+        await Bot.change_presence(activity= discord.Game("Команда помощи b_help"))
         await asyncio.sleep(10)
-        await Bot.change_presence(activity= discord.Game("Статы бота b_stats"))
+        await Bot.change_presence(activity= discord.Game("Создан Baget.Co"))
         await asyncio.sleep(10)
 
 
@@ -564,21 +560,21 @@ async def reload(ctx, extension):
     else:
         await ctx.send(f"Модуль **{extension}** успешно перезагружен!")
 
+
 @Bot.command()
-async def cmd( ctx):
-    embed1 = discord.Embed(title="Это главное меню команд в боте", description='Листай что-бы узнать команды ')
-    embed2 = discord.Embed(title="Общие команды  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент` ", description='b_thx Сказать спасибо или дать репу \n b_my_thx Моя репа или спасибо \n b_avatar(пинг)Покозать аву себя или пользователя \n b_servercount показывает где я есть \n b_ping посмотреть свой пинг \n b_ran_avatar случайная аниме ава \n b_hello привет боту \n b_profile(пинг) твой профиль или другого ')
-    embed3 = discord.Embed(title="Веселости  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='b_pat [пинг] погладить \n b_slap [пинг] ударить\n b_kiss [пинг] поцеловать\n b_hug[пинг]обнять\n b_wiki[Текст]Википедия\n b_knb сыграть в КНБ! \n b_man Stonks \n b_wea [Город] Погода в городе \n b_numbers сыграть в угодайку n b_calc [число] [Оператор] [число] калькулятор\n b_remind [Время] [Текст] Напомнить \n  b_serverinfo Инфо о сервере ')
-    embed4 = discord.Embed(title="Модераторское \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='b_kick[пинг][причина]кик человека\n b_ban[пинг](причина](время]бан человека\n b_unban[айди]разбан\n  \n b_clear[Кол-во сообшений] \n b_mute [человек] [прчина]вечный мут')
-    embed5 = discord.Embed(title="Другое \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='b_ball[Вопрос] Кинуть шар \n b_dice[1 число] [2 число] сыграть в кости \n b_giveaway[Время в секундна][Вещь] Конкурс b_gl [Запрос] Я гуглю за вас( \n b_c0t Котики!!  \n b_vote Проголосовать за меня ')
-    embed5 = discord.Embed(title="Предложка \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='b_suggest [Идея]  предложить идею \n b_suggest_set  [канал] поставить канал идей \n b_suggest_off отключить')
-    embed6 = discord.Embed(title="Жалобы \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='b_report [Жалобы]  жалобы на сервере или юзера \n b_report_set  [канал] поставить канал жалоб \n b_report_off  отключить')
-    embed7 = discord.Embed(title="Спецальное \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='b_ttt [Участник] предложить поиграть \n accept принять вызов \n b_flag Сыграть в игру угодай флаг \n b_marry [Пинг] Поженится \n b_divorce Развестисть \n b_sap Сыграть в сапера')
-    embed8 = discord.Embed(title="Вход/Выход \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", description='')
-    embeds = [embed1, embed2, embed3, embed4 , embed5 , embed6 , embed7]
-    message = await ctx.send(embed=embed1)
-    page = Paginator(Bot, message, only=ctx.author, use_more=False, embeds=embeds)
-    await page.start()
+async def help( ctx  ):
+	embed=discord.Embed(title="**Все команды бота**", color=0x56d625)
+	embed.set_author(name="Твой жорик")
+	embed.add_field(name="Общие команды  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_thx Сказать спасибо или дать репу \n b_my_thx Моя репа или спасибо \n b_avatar(пинг)Покозать аву себя или пользователя \n b_servercount показывает где я есть \n b_ping посмотреть свой пинг \n b_ran_avatar случайная аниме ава \n b_hello привет боту \n b_profile(пинг) твой профиль или другого", inline=False)
+	embed.add_field(name="Веселости  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_pat [пинг] погладить \n b_slap [пинг] ударить\n b_kiss [пинг] поцеловать\n b_hug[пинг]обнять\n b_wiki[Текст]Википедия\n b_knb сыграть в КНБ! \n b_man Stonks \n b_wea [Город] Погода в городе \n b_numbers сыграть в угодайку n b_calc [число] [Оператор] [число] калькулятор\n b_remind [Время] [Текст] Напомнить \n  b_serverinfo Инфо о сервере ", inline=True)
+	embed.add_field(name="Модераторское \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_kick[пинг][причина]кик человека\n b_ban[пинг](причина](время]бан человека\n b_unban[айди]разбан\n  \n b_clear[Кол-во сообшений] \n b_mute [человек] [прчина]вечный мут", inline=True)
+	embed.add_field(name="Другое \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_ball[Вопрос] Кинуть шар \n b_dice[1 число] [2 число] сыграть в кости \n b_giveaway[Время в секундна][Вещь] Конкурс b_gl [Запрос] Я гуглю за вас( \n b_c0t Котики!!  \n b_vote Проголосовать за меня", inline=True)
+	embed.add_field(name="Предложка \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_suggest [Идея]  предложить идею \n b_suggest_set  [канал] поставить канал идей \n b_suggest_off отключить", inline=True)
+	embed.add_field(name="Жалобы \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_report [Жалобы]  жалобы на сервере или юзера \n b_report_set  [канал] поставить канал жалоб \n b_report_off  отключить", inline=True)
+	embed.add_field(name="Спецальное \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_flag Сыграть в игру угодай флаг \n b_marry [Пинг] Поженится \n b_divorce Развестисть \n b_sap Сыграть в сапера", inline=True)
+	embed.add_field(name="Приватные войсы \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="Для этого была создана отдельная мега красивая команлда b_privhelp", inline=True)
+	await ctx.send( embed = embed )
+
 
 @Bot.command()
 @commands.cooldown(1, 60*60*24*2, commands.BucketType.member)
