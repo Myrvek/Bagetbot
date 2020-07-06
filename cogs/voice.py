@@ -313,5 +313,5 @@ class voice(commands.Cog):
             conn.close()
 
 
-def setup(bot):
+def setup(Bot):
     Bot.add_cog(voice(Bot))
