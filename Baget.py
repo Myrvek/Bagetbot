@@ -18,8 +18,7 @@ import requests
 import random 
 import time
 from Cybernator import Paginator
-import cv2
-from pyzbar import pyzbar
+
 import qrcode
 
 
@@ -567,7 +566,7 @@ async def reload(ctx, extension):
 async def help( ctx  ):
 	embed=discord.Embed(title="**Все команды бота**", color=0x56d625)
 	embed.set_author(name="Твой жорик")
-	embed.add_field(name="Общие команды  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_thx Сказать спасибо или дать репу \n b_my_thx Моя репа или спасибо \n b_avatar(пинг)Покозать аву себя или пользователя \n b_servercount показывает где я есть \n b_ping посмотреть свой пинг \n b_ran_avatar случайная аниме ава \n b_hello привет боту \n b_profile(пинг) твой профиль или другого \n b_qr [Сылка или текст] Сделать кр код \n b_scan [Код] сканировать код  ", inline=False)
+	embed.add_field(name="Общие команды  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_thx Сказать спасибо или дать репу \n b_my_thx Моя репа или спасибо \n b_avatar(пинг)Покозать аву себя или пользователя \n b_servercount показывает где я есть \n b_ping посмотреть свой пинг \n b_ran_avatar случайная аниме ава \n b_hello привет боту \n b_profile(пинг) твой профиль или другого   ", inline=False)
 	embed.add_field(name="Веселости  \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_pat [пинг] погладить \n b_slap [пинг] ударить\n b_kiss [пинг] поцеловать\n b_hug[пинг]обнять\n b_wiki[Текст]Википедия\n b_knb сыграть в КНБ! \n b_man Stonks \n b_wea [Город] Погода в городе \n b_numbers сыграть в угодайку n b_calc [число] [Оператор] [число] калькулятор\n b_remind [Время] [Текст] Напомнить \n  b_serverinfo Инфо о сервере ", inline=True)
 	embed.add_field(name="Модераторское \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_kick[пинг][причина]кик человека\n b_ban[пинг](причина](время]бан человека\n b_unban[айди]разбан\n  \n b_clear[Кол-во сообшений] \n b_mute [человек] [прчина]вечный мут", inline=True)
 	embed.add_field(name="Другое \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_ball[Вопрос] Кинуть шар \n b_dice[1 число] [2 число] сыграть в кости \n b_giveaway[Время в секундна][Вещь] Конкурс b_gl [Запрос] Я гуглю за вас( \n b_c0t Котики!!  \n b_vote Проголосовать за меня", inline=True)
@@ -604,81 +603,12 @@ async def flag(ctx):
                 await ctx.send(embed = e)
 
 
-@Bot.command()
-async def qr(ctx, *, arg):
-    v = arg
-    img = qrcode.make(v)
-
-
-    qr_there = os.path.isfile('myqr.jpg')
-
-    try:
-        if qr_there:
-            os.remove('myqr.jpg')
-            print('Старый файл удален')
-    except PermissionError:
-        print('Не удалось удалить файл')
-
-
-    img.save('myqr.jpg')
-    await ctx.send(file=discord.File('myqr.jpg'))
-    print(v)
-@Bot.command()
-async def scan(ctx):
-    try:
-        qr_there = os.path.isfile('qr.png')
-        try:
-            if qr_there:
-                os.remove('qr.png')
-                print('Старый файл удален')
-        except PermissionError:
-            print('Не удалось удалить файл')
-        attachment = ctx.message.attachments[0]
-        url = attachment.url
-        ddd = requests.get(url)
-        img_file = open('qr.png', 'wb')
-        img_file.write(ddd.content)
-        img_file.close() 
-        img = cv2.imread('qr.png')
-        bs = pyzbar.decode(img)
-
-        for barcode in bs:
-            bd = barcode.data.decode('utf-8')
-            await ctx.send(bd)
-    except Exception as e:
-        await ctx.send('***Похоже вы не прикрепили изображение с qr-кодом***')
 
 
 
 
-@Bot.command()
-async def scan_url(ctx, arg):
-    try:
-        qr_there = os.path.isfile('qr_url.png')
-        try:
-            if qr_there:
-                os.remove('qr_url.png')
-                print('Старый файл удален')
-        except PermissionError:
-            print('Не удалось удалить файл')
 
 
-        url = arg
-        ddd = requests.get(url)
-        img_file = open('qr_url.png', 'wb')
-        img_file.write(ddd.content)
-        img_file.close() 
-
-
-
-
-        img = cv2.imread('qr_url.png')
-        bs = pyzbar.decode(img)
-        for barcode in bs:
-            bd = barcode.data.decode('utf-8')
-            await ctx.send(bd)
-    except Exception as e:
-        await ctx.send('***Похоже вы не прикрепили ссылку с qr-кодом***')
 
 token = os.environ.get('BOT_TOKEN')
 
