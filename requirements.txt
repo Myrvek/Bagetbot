@@ -15,6 +15,7 @@ click==7.1.2
 colorama==0.4.3
 config==0.5.0.post0
 COVID19Py==0.3.0
+opencv-python==4.3.0.36
 Cybernator==0.3
 DateTime==4.3
 decorator==4.4.2
