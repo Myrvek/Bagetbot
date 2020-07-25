@@ -574,7 +574,7 @@ async def help( ctx  ):
 	embed.add_field(name="Предложка \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_suggest [Идея]  предложить идею \n b_suggest_set  [канал] поставить канал идей \n b_suggest_off отключить", inline=True)
 	embed.add_field(name="Жалобы \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_report [Жалобы]  жалобы на сервере или юзера \n b_report_set  [канал] поставить канал жалоб \n b_report_off  отключить", inline=True)
 	embed.add_field(name="Спецальное \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_flag Сыграть в игру угодай флаг \n b_marry [Пинг] Поженится \n b_divorce Развестисть \n b_sap Сыграть в сапера", inline=True)
-	embed.add_field(name="Игры(мне очень было больно) \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_bsPlayer[Тег] О игроке \n b_bsClan [Тег] инфо о клане \n b_crPlayer [ Тег] О игроке  b_crClan [Тег] О клаne" inline=True)
+	embed.add_field(name="Игры(мне очень было больно) \n `() Не обезательный аргумент` \n `[] Обезательный аргумент`", value="b_bsPlayer[Тег] О игроке \n b_bsClan [Тег] инфо о клане \n b_crPlayer [ Тег] О игроке  b_crClan [Тег] О клаne" , inline=True)
 	await ctx.send( embed = embed )
 
 
