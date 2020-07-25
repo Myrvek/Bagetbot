@@ -27,7 +27,7 @@ class error(commands.Cog):
 				
 
 			return await ctx.send(embed=embed)
-		import json
+import json
 import requests
 
     @commands.command(aliases=['коронавирус', 'ковид'])
